@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { projectService, type Project } from '../../services/projectService';
+import Loading from '../../components/Loading';
 
 const ProjectsPage = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -107,9 +108,7 @@ const ProjectsPage = () => {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {loading ? (
-            <div className="text-center py-20">
-              <div className="text-4xl font-black">Yükleniyor...</div>
-            </div>
+            <Loading message="PROJELER YÜKLENİYOR..." />
           ) : error ? (
             <div className="text-center py-20">
               <div className="text-2xl font-black text-red-600 mb-4">{error}</div>

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { galleryService, type GalleryItem } from '../../services/galleryService';
 import FileUpload from '../../components/admin/FileUpload';
+import Loading from '../../components/Loading';
 
 const GalleryManagement = () => {
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
@@ -162,7 +163,7 @@ const GalleryManagement = () => {
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {loading ? (
-            <div className="col-span-full text-center py-20 text-2xl font-black">Yükleniyor...</div>
+            <Loading message="YÜKLENİYOR..." />
           ) : galleryItems.length === 0 ? (
             <div className="col-span-full text-center py-20">
               <div className="text-4xl font-black mb-4">Henüz fotoğraf yok</div>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import keycloak from '../keycloak';
 
-const API_BASE_URL = 'http://localhost:8081/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8081/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -10,7 +10,6 @@ const api = axios.create({
   },
 });
 
-// Request interceptor - sadece admin işlemleri için token ekle
 api.interceptors.request.use(
   (config) => {
     // Sadece GET istekleri ve belirli endpoint'ler için public

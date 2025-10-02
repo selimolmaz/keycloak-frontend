@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { projectService, type Project } from '../../services/projectService';
 import FileUpload from '../../components/admin/FileUpload';
+import Loading from '../../components/Loading';
 
 const ProjectManagement = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -207,7 +208,7 @@ const ProjectManagement = () => {
         {/* Projects List */}
         <div className="space-y-6">
           {loading ? (
-            <div className="text-center py-20 text-2xl font-black">Yükleniyor...</div>
+            <Loading message="YÜKLENİYOR..." />
           ) : projects.length === 0 ? (
             <div className="text-center py-20">
               <div className="text-4xl font-black mb-4">Henüz proje yok</div>

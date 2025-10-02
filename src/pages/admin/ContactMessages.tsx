@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { contactService, type ContactMessage } from '../../services/contactService';
+import Loading from '../../components/Loading';
 
 const ContactMessages = () => {
   const [messages, setMessages] = useState<ContactMessage[]>([]);
@@ -16,7 +17,7 @@ const ContactMessages = () => {
     try {
       setLoading(true);
       let data: ContactMessage[];
-      
+
       if (filter === 'unread') {
         data = await contactService.getUnreadMessages();
       } else if (filter === 'read') {
@@ -24,7 +25,7 @@ const ContactMessages = () => {
       } else {
         data = await contactService.getAllMessages();
       }
-      
+
       setMessages(data);
     } catch (error) {
       console.error('Error fetching messages:', error);
@@ -80,34 +81,31 @@ const ContactMessages = () => {
         </div>
 
         {/* Filter */}
-        <div className="flex gap-4 mb-8">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8">
           <button
             onClick={() => setFilter('all')}
-            className={`px-6 py-3 font-bold text-sm tracking-wide border-4 border-black transition-all ${
-              filter === 'all'
+            className={`w-full sm:w-auto px-6 py-3 font-bold text-sm tracking-wide border-4 border-black transition-all ${filter === 'all'
                 ? 'bg-black text-white'
                 : 'bg-white hover:bg-black hover:text-white'
-            }`}
+              }`}
           >
             TÜMÜ ({messages.length})
           </button>
           <button
             onClick={() => setFilter('unread')}
-            className={`px-6 py-3 font-bold text-sm tracking-wide border-4 border-black transition-all ${
-              filter === 'unread'
+            className={`w-full sm:w-auto px-6 py-3 font-bold text-sm tracking-wide border-4 border-black transition-all ${filter === 'unread'
                 ? 'bg-black text-white'
                 : 'bg-white hover:bg-black hover:text-white'
-            }`}
+              }`}
           >
             OKUNMAMIŞ
           </button>
           <button
             onClick={() => setFilter('read')}
-            className={`px-6 py-3 font-bold text-sm tracking-wide border-4 border-black transition-all ${
-              filter === 'read'
+            className={`w-full sm:w-auto px-6 py-3 font-bold text-sm tracking-wide border-4 border-black transition-all ${filter === 'read'
                 ? 'bg-black text-white'
                 : 'bg-white hover:bg-black hover:text-white'
-            }`}
+              }`}
           >
             OKUNMUŞ
           </button>
@@ -117,7 +115,7 @@ const ContactMessages = () => {
           {/* Messages List */}
           <div className="lg:col-span-1 space-y-4">
             {loading ? (
-              <div className="text-center py-10 font-black">Yükleniyor...</div>
+              <Loading message="MESAJLAR YÜKLENİYOR..." />
             ) : messages.length === 0 ? (
               <div className="text-center py-10">
                 <div className="text-2xl font-black mb-2">Mesaj yok</div>
@@ -128,13 +126,12 @@ const ContactMessages = () => {
                 <div
                   key={message.id}
                   onClick={() => handleSelectMessage(message)}
-                  className={`border-4 border-black p-4 cursor-pointer transition-all ${
-                    selectedMessage?.id === message.id
+                  className={`border-4 border-black p-4 cursor-pointer transition-all ${selectedMessage?.id === message.id
                       ? 'bg-black text-white'
                       : message.isRead
-                      ? 'bg-white hover:bg-zinc-100'
-                      : 'bg-yellow-50 hover:bg-yellow-100'
-                  }`}
+                        ? 'bg-white hover:bg-zinc-100'
+                        : 'bg-yellow-50 hover:bg-yellow-100'
+                    }`}
                 >
                   <div className="flex justify-between items-start mb-2">
                     <h3 className="font-black text-sm">{message.name}</h3>

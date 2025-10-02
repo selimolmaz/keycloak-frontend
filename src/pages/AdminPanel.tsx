@@ -3,7 +3,7 @@ import keycloak from '../keycloak';
 
 const AdminPanel = () => {
   return (
-    <div className="min-h-screen bg-zinc-50 p-8">
+    <div className="min-h-screen bg-zinc-50 p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-12">
@@ -19,7 +19,7 @@ const AdminPanel = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <Link
             to="/admin/projects"
-            className="border-8 border-black bg-white p-8 hover:bg-black hover:text-white transition-all group"
+            className="border-8 border-black bg-white p-4 md:p-8 hover:bg-black hover:text-white transition-all group"
           >
             <div className="text-6xl font-black mb-4 text-zinc-300 group-hover:text-zinc-700">
               01
@@ -32,7 +32,7 @@ const AdminPanel = () => {
 
           <Link
             to="/admin/gallery"
-            className="border-8 border-black bg-white p-8 hover:bg-black hover:text-white transition-all group"
+            className="border-8 border-black bg-white p-4 md:p-8 hover:bg-black hover:text-white transition-all group"
           >
             <div className="text-6xl font-black mb-4 text-zinc-300 group-hover:text-zinc-700">
               02
@@ -45,7 +45,7 @@ const AdminPanel = () => {
 
           <Link
             to="/admin/messages"
-            className="border-8 border-black bg-white p-8 hover:bg-black hover:text-white transition-all group"
+            className="border-8 border-black bg-white p-4 md:p-8 hover:bg-black hover:text-white transition-all group"
           >
             <div className="text-6xl font-black mb-4 text-zinc-300 group-hover:text-zinc-700">
               03
@@ -58,7 +58,7 @@ const AdminPanel = () => {
         </div>
 
         {/* Quick Stats */}
-        <div className="bg-black text-white border-8 border-black p-8">
+        <div className="bg-black text-white border-8 border-black p-4 md:p-8">
           <h2 className="text-3xl font-black mb-8">HÜZLİ BAKIŞ</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="text-center">
