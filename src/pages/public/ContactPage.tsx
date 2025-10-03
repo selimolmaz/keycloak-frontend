@@ -245,15 +245,18 @@ const ContactPage = () => {
           <h2 className="text-5xl font-black mb-12 tracking-tighter text-white">
             KONUM
           </h2>
-          
-          {/* Map Placeholder */}
-          <div className="aspect-video bg-zinc-800 border-8 border-white flex items-center justify-center">
-            <div className="text-center text-white">
-              <div className="text-8xl font-black mb-4 text-zinc-700">📍</div>
-              <p className="font-mono text-sm text-gray-400">
-                Harita buraya eklenecek
-              </p>
-            </div>
+          {/* Google Maps Embed */}
+          <div className="aspect-video bg-zinc-800 border-8 border-white overflow-hidden">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1572.5208663000979!2d32.61956104259615!3d37.97615538034761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1str!2str!4v1759517695870!5m2!1str!2str"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Şirket Konumu"
+            />
           </div>
         </div>
       </section>
